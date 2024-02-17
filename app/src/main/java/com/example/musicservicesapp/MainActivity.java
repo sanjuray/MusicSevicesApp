@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,11 +24,17 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MusicService.class);
             startService(intent);
+            Toast.makeText(this,
+                    "Ringtone started playing...",
+                    Toast.LENGTH_SHORT).show();
         });
 
         endButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MusicService.class);
             stopService(intent);
+            Toast.makeText(this,
+                    "Ringtone stopped playing!",
+                    Toast.LENGTH_SHORT).show();
         });
 
         IntentFilter intentFilter = new IntentFilter("android.intent.action.AIRPLANE_MODE");
